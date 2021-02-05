@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -32,6 +33,20 @@ public class Controller {
 		session.setAttribute("textInUrl", textInUrl);
 		
 		return "course";
+		
+	}
+	
+	@RequestMapping("courses-three")
+	public ModelAndView coursesThree(@RequestParam("name") String textInUrl) {
+		
+		System.out.println("Print param-name : " + textInUrl);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("textInUrl", textInUrl);
+		modelAndView.setViewName("course");
+		
+		return modelAndView;
 		
 	}
 
