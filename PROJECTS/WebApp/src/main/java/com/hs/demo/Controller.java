@@ -1,15 +1,23 @@
 package com.hs.demo;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @org.springframework.stereotype.Controller
 public class Controller {
 	
 	@RequestMapping("courses")
-	public String courses() {
+	public String courses(HttpServletRequest request) {
 		
-		System.out.println("Welcome !!!");
+		HttpSession httpSession = request.getSession();
+		
+		String textInUrl = request.getParameter("param-name");
+		
+		System.out.println("Print param-name : " + textInUrl);
+		
+		httpSession.setAttribute("textInUrl", textInUrl);
 		
 		return "course";
 		
