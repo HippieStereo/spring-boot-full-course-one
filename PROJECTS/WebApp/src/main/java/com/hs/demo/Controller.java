@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -24,7 +25,7 @@ public class Controller {
 	}
 	
 	@RequestMapping("courses-two")
-	public String coursesTwo(String textInUrl, HttpSession session) {
+	public String coursesTwo(@RequestParam("name") String textInUrl, HttpSession session) {
 		
 		System.out.println("Print param-name : " + textInUrl);
 		
