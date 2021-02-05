@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @org.springframework.stereotype.Controller
 public class Controller {
 	
-	@RequestMapping("courses")
-	public String courses(HttpServletRequest request) {
+	@RequestMapping("courses-one")
+	public String coursesOne(HttpServletRequest request) {
 		
 		HttpSession httpSession = request.getSession();
 		
@@ -18,6 +18,17 @@ public class Controller {
 		System.out.println("Print param-name : " + textInUrl);
 		
 		httpSession.setAttribute("textInUrl", textInUrl);
+		
+		return "course";
+		
+	}
+	
+	@RequestMapping("courses-two")
+	public String coursesTwo(String textInUrl, HttpSession session) {
+		
+		System.out.println("Print param-name : " + textInUrl);
+		
+		session.setAttribute("textInUrl", textInUrl);
 		
 		return "course";
 		
