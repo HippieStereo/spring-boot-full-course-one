@@ -1,38 +1,43 @@
 package com.hs.demo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
 
-	private int id;
-	private String name;
-	private String email;
+	@Id
+	private int cid;
+	private String cname;
+	private String cemail;
 	
-	public int getId() {
-		return id;
+	public int getcid() {
+		return cid;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setCid(int cid) {
+		this.cid = cid;
 	}
 	
-	public String getName() {
-		return name;
+	public String getCname() {
+		return cname;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 	
-	public String getEmail() {
-		return email;
+	public String getCemail() {
+		return cemail;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCemail(String cemail) {
+		this.cemail = cemail;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", email=" + email + "]";
+		return "Customer [cid=" + cid + ", cname=" + cname + ", cemail=" + cemail + "]";
 	}
 	
 }

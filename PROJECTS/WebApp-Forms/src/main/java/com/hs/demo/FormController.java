@@ -1,32 +1,53 @@
 package com.hs.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FormController {
+	
+	@Autowired
+	CustomerRepo repo;
 
-	@GetMapping("customer")
-	public String customerForm() {
+	@RequestMapping("/")
+	public String homeForm() {
 		
-		return "customer";
+		return "form";
 		
 	}
 	
-	@PostMapping("result")
-	public String viewResult(@RequestParam("cid") String cid, @RequestParam("cname") String cname, 
-			@RequestParam("cemail") String cemail, ModelMap model){
+	@RequestMapping("/putInDB")
+	public String customerForm(Customer customer) {
 		
-		model.addAttribute("cid", cid);
-		model.addAttribute("cname", cname);
-		model.addAttribute("cemail", cemail);
+		repo.save(customer);
 		
-		System.out.println(cid + " " + cname + " " + cemail);
+		return "form";
+		
+	}
+	
+	@RequestMapping("/result")
+	public String customerForm() {
 		
 		return "result";
+		
+	}
+	
+	@GetMapping("/retrieve")
+	public ModelAndView viewResult(@RequestParam("cid") int cid){
+		
+		ModelAndView mv = new ModelAndView("retrieve");
+		
+		Customer customer = repo.findById(cid).orElse(null);
+		
+		mv.addObject(customer);
+		
+		return mv;
 		
 	}
 	

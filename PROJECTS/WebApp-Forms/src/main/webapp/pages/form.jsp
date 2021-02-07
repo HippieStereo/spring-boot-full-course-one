@@ -7,7 +7,7 @@
 <title>Customer Form</title>
 </head>
 <body>
-	<form method="post" action="result">
+	<form method="post" action="putInDB">
 		Enter customer ID : <input type="text" name="cid"><br>
 		Enter customer Name : <input type="text" name="cname"><br>
 		Enter customer Email : <input type="text" name="cemail"><br>

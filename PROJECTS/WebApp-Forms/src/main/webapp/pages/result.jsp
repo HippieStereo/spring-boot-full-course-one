@@ -7,9 +7,10 @@
 <title>Info</title>
 </head>
 <body>
-	<h1>Details</h1>
-	<h4>Costumer ID : ${cid}</h4>
-	<h4>Costumer Name : ${cname}</h4>
-	<h4>Costumer Email : ${cemail}</h4>
+	<h1>View Customer Details</h1>
+	<form action="retrieve" action="retrieve">
+		<input type="number" name="cid">
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>
